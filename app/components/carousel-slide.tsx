@@ -1,0 +1,33 @@
+import { StrapiImage } from "./strapi-image";
+
+interface SlideProps{
+    index: number;
+    activeIndex: number;
+    id: number | null;
+    title: string | null;
+    subheading: string | null;
+    image: {
+        url: string;
+        alternativeText: string;
+    }
+}
+
+export function Slide({
+    index,
+    activeIndex,
+    id,
+    title,
+    subheading,
+    image,
+    }: Readonly<SlideProps>) {
+    var classes = "relative block w-full h-120 overflow-hidden top-0 carousel-item";
+    return (
+        <div className={(index === activeIndex ? 'slides active '+classes : 'inactive '+classes) } >
+            <div className="absolute block top-40 z-9 px-20">
+                <h2>{title}</h2>
+                <h3>{subheading}</h3>
+            </div>
+            <StrapiImage src={image.url} alt={image.alternativeText} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
+        </div>
+    )
+};

@@ -13,3 +13,17 @@ body {
     color-scheme: dark;
   }
 }
+
+.active {
+  display: inline-block;
+}
+
+.inactive {
+  display: none;
+}
+
+.slides {
+  /* height: var(--heights);
+  width: var(--widths);
+  position: relative; */
+}
