@@ -15,14 +15,17 @@ body {
 }
 
 .active {
-  display: inline-block;
+  /* display: inline-block; */
+  left: 0px;
 }
 
 .inactive {
-  display: none;
+  /* display: none; */
+  left: 100%;
 }
 
 .slides {
+  /* transition: left 0.5s ease-in-out; */
   /* height: var(--heights);
   width: var(--widths);
   position: relative; */

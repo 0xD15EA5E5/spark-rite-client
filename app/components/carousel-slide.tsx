@@ -20,9 +20,10 @@ export function Slide({
     subheading,
     image,
     }: Readonly<SlideProps>) {
-    var classes = "relative block w-full h-120 overflow-hidden top-0 carousel-item";
+    var classes = "slides transition-left duration-300 absolute block w-full h-120 overflow-hidden top-0 carousel-item";
     return (
-        <div className={(index === activeIndex ? 'slides active '+classes : 'inactive '+classes) } >
+        <div className={(index === activeIndex ? 'slides active z-9 '+classes : 'inactive '+classes) } >
+            <div className="absolute block w-full h-full z-1 bg-slate-950 opacity-30"></div>
             <div className="absolute block top-40 z-9 px-20">
                 <h2>{title}</h2>
                 <h3>{subheading}</h3>
