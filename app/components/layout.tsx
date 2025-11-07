@@ -1,11 +1,11 @@
 import React from 'react';
-import nav from '~/components/nav';
+import Topnav from '~/components/topnav';
 
-const Layout = ({  }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      {/* <nav /> */}
-      {/* {children} */}
+      <Topnav />
+      {children}
     </>
   );
 }

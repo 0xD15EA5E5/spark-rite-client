@@ -1,5 +1,6 @@
 import type { Route } from "./+types/_index";
-import { Layout } from "~/components/layout";
+import Topnav from "~/components/topnav";
+import Layout from "~/components/layout";
 
 import qs from "qs";
 import { Carousel } from "~/components/carousel";
@@ -40,8 +41,10 @@ export async function loader({params}: Route.LoaderArgs) {
 export default function About({loaderData}:{loaderData: LoaderData}){
     if (!loaderData) return <p>No data found</p>;
     return (
-        <Layout>
-          <Carousel slidedata={loaderData.paneldata}/>
-        </Layout>
+        <>
+          <Layout>
+            <Carousel slidedata={loaderData.paneldata}/>
+          </Layout>
+        </>
     );
 }
