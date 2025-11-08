@@ -25,8 +25,8 @@ export function Slide({
         <div className={(index === activeIndex ? 'slides active z-9 '+classes : 'inactive '+classes) } >
             <div className="absolute block w-full h-full z-1 bg-slate-950 opacity-30"></div>
             <div className="absolute block top-40 z-9 px-20">
-                <h2>{title}</h2>
-                <h3>{subheading}</h3>
+                <h2 className="text-5xl">{title}</h2>
+                <h3 className="text-xl">{subheading}</h3>
             </div>
             <StrapiImage src={image.url} alt={image.alternativeText} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
         </div>

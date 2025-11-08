@@ -1,6 +1,7 @@
 import type { Route } from "../+types/about";
 import qs from "qs";
 import { Carousel } from "~/components/carousel";
+import Layout from "~/components/layout";
 
 interface Panel {
     id: number
@@ -38,6 +39,8 @@ export async function loader({params}: Route.LoaderArgs) {
 export default function About({loaderData}:{loaderData: LoaderData}){
     if (!loaderData) return <p>No data found</p>;
     return (
-        <Carousel slidedata={loaderData.paneldata}/>
+        <Layout>
+            <Carousel slidedata={loaderData.paneldata}/>
+        </Layout>
     );
 }
