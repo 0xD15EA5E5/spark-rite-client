@@ -9,7 +9,12 @@ import { Carousel } from "~/components/carousel";
 interface LoaderData {
     paneldata: [];
     content: [];
-    triplehex: {};
+    triplehex: {
+        Text: string;
+        ButtonText: string;
+        ButtonURL: string;
+        Images: [];
+    };
 }
 
 export async function loader({params}: Route.LoaderArgs) {
