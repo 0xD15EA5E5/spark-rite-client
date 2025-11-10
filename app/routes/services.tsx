@@ -1,20 +1,11 @@
-import type { Route } from "./+types/about";
+import type { Route } from "./+types/services";
 import qs from "qs";
 import { Carousel } from "~/components/carousel";
 import Layout from "~/components/layout";
 
-interface Panel {
-    id: number
-    Title: string
-    subheading: string
-    Enabled: boolean
-    Image: {
-        id: number
-    };
-}
-
 interface LoaderData {
     paneldata: [];
+    content: [];
 }
 
 export async function loader({params}: Route.LoaderArgs) {
@@ -25,22 +16,29 @@ export async function loader({params}: Route.LoaderArgs) {
     url.search = qs.stringify({
         populate: {
             Panel: {
-                populate: '*',
+              populate: '*',
+            },
+            HexagonBlock: {
+              populate: '*',
             }
         }
     })
 
     const paneldata = await fetch(url.href);
     var data = await paneldata.json();
+    var hexdata = data.data.HexagonBlock;
     data = data.data.Panel;
-    return {paneldata: data as LoaderData};
+    
+    return {paneldata: data as LoaderData, content: hexdata};
 }
 
-export default function About({loaderData}:{loaderData: LoaderData}){
+export default function Home({loaderData}:{loaderData: LoaderData}){
     if (!loaderData) return <p>No data found</p>;
     return (
-        <Layout>
+        <>
+          <Layout>
             <Carousel slidedata={loaderData.paneldata}/>
-        </Layout>
+          </Layout>
+        </>
     );
 }

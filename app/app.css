@@ -30,3 +30,11 @@ body {
   width: var(--widths);
   position: relative; */
 }
+
+.hexagon {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  width: 35vw;
+  height: 30vw;
+  object-fit: cover;
+  object-position: center;
+}
