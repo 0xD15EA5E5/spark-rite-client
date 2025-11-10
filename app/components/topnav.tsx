@@ -40,6 +40,7 @@ export default function Topnav({
             <div className="col-span-2 h-20 p-2 flex items-center">
                 <StrapiImage className="h-full" src="/uploads/logo_73ef731f0d.png" alt=""/>
                 <div className="ml-2">
+                    {data}
                     {/* <p>{data.siteName}</p> */}
                     <p>PETROL TOOL SERVICE & REPAIR</p>
                 </div>

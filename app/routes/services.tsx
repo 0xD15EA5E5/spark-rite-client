@@ -1,44 +1,49 @@
-import type { Route } from "./+types/services";
+import type { Route } from "./+types/about";
 import qs from "qs";
-import { Carousel } from "~/components/carousel";
+import { Banner } from "~/components/banner";
+import { HexContent } from "~/components/hex-content-block";
+import { ContentBlock } from "~/components/content-block";
 import Layout from "~/components/layout";
 
 interface LoaderData {
-    paneldata: [];
-    content: [];
+    header: {
+        url: string;
+        alternativeText: string;
+    };
+    intro: [];
+    lowercontent: {};
 }
 
 export async function loader({params}: Route.LoaderArgs) {
     const BASE_URL = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
-    const path = "/api/home";
+    const path = "/api/service";
     const url = new URL(path, BASE_URL);
 
     url.search = qs.stringify({
         populate: {
-            Panel: {
-              populate: '*',
+            Header: {
+                populate: '*',
             },
-            HexagonBlock: {
-              populate: '*',
+            Intro: {
+                populate: '*',
             }
         }
     })
-
-    const paneldata = await fetch(url.href);
-    var data = await paneldata.json();
-    var hexdata = data.data.HexagonBlock;
-    data = data.data.Panel;
-    
-    return {paneldata: data as LoaderData, content: hexdata};
+    const aboutdata = await fetch(url.href);
+    var data = await aboutdata.json();
+    var headerdata = data.data.Header;
+    var introdata = [data.data.Intro];
+    var lowercontentdata = data.data.LowerContent;
+    return {header: headerdata as LoaderData, intro: introdata, lowercontent: lowercontentdata};
 }
 
-export default function Home({loaderData}:{loaderData: LoaderData}){
+export default function Services({loaderData}:{loaderData: LoaderData}){
     if (!loaderData) return <p>No data found</p>;
     return (
-        <>
-          <Layout>
-            <Carousel slidedata={loaderData.paneldata}/>
-          </Layout>
-        </>
+        <Layout>
+            <Banner src={loaderData.header.url} alt={loaderData.header.alternativeText} className="" text="Services"/>
+            <HexContent content={loaderData.intro}/>
+            <ContentBlock content={loaderData.lowercontent} />
+        </Layout>
     );
 }
