@@ -22,9 +22,9 @@ export function Slide({
     }: Readonly<SlideProps>) {
     var classes = "slides transition-left duration-300 absolute block w-full h-120 overflow-hidden top-0 carousel-item";
     return (
-        <div className={(index === activeIndex ? 'slides active z-9 '+classes : 'inactive '+classes) } >
+        <div className={(index === activeIndex ? 'active z-99 '+classes : 'inactive delay-400 '+classes) } >
             <div className="absolute block w-full h-full z-1 bg-slate-950 opacity-30"></div>
-            <div className="absolute block top-40 z-9 px-20">
+            <div className="absolute block top-40 z-9 px-20 text-neutral-50">
                 <h2 className="text-5xl">{title}</h2>
                 <h3 className="text-xl">{subheading}</h3>
             </div>
