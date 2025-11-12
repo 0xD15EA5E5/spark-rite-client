@@ -37,10 +37,46 @@ body {
   height: 15vw;
 }
 
-.triplehexcard h3 {
-  font-size: 30px;
+@media (width >= 64rem){
+  .triplehexcard h2 {
+    font-size: 35px;
+  }
+  
+  .triplehexcard h3 {
+    font-size: 25px;
+  }  
 }
 
-.triplehexcard h2 {
-  font-size: 40px;
+@media (width >= 80rem){
+  .triplehexcard h2 {
+    font-size: 40px;
+  }
+  
+  .triplehexcard h3 {
+    font-size: 30px;
+  }  
+}
+
+@media screen and (max-width: 640px) {
+  .triplehexcard .hexagon {
+    width: 45vw;
+    height: 45vw;
+  }
+
+  .hexagon {
+    width: 80vw;
+    height: 70vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .triplehexcard .hexagon {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .hexagon {
+    width: 100%;
+    height: 70vw;
+  }
 }

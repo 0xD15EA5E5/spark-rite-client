@@ -12,6 +12,7 @@ interface LoaderData {
     };
     intro: [];
     lowercontent: {};
+    title: string;
 }
 
 export async function loader({params}: Route.LoaderArgs) {
@@ -34,16 +35,16 @@ export async function loader({params}: Route.LoaderArgs) {
     var headerdata = data.data.Header;
     var introdata = data.data.Intro;
     var lowercontentdata = data.data.LowerContent;
-    return {header: headerdata as LoaderData, intro: introdata, lowercontent: lowercontentdata};
+    return {header: headerdata as LoaderData, intro: introdata, lowercontent: lowercontentdata, title: data.data.title};
 }
 
 export default function About({loaderData}:{loaderData: LoaderData}){
     if (!loaderData) return <p>No data found</p>;
     return (
         <Layout>
-            <Banner src={loaderData.header.url} alt={loaderData.header.alternativeText} className="" text="About"/>
+            <Banner src={loaderData.header.url} alt={loaderData.header.alternativeText} className="" text={loaderData.title}/>
             <HexContent content={loaderData.intro}/>
-            <ContentBlock content={loaderData.lowercontent} />
+            <ContentBlock content={loaderData.lowercontent} classes=""/>
         </Layout>
     );
 }

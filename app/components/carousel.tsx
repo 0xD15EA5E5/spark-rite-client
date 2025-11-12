@@ -29,7 +29,7 @@ export function Carousel({
         return () => clearInterval(interval);
     }, [activeIndex]);
     return (
-        <div className="w-full relative carousel h-121 border-b-4 border-yellow-400">
+        <div className="w-full relative carousel h-41 sm:h-61 md:h-81 lg:h-101 xl:h-121 border-b-4 border-yellow-400">
              {slidedata.map((panel : Panel, index)=>(
                 <Slide key={index} index={index} activeIndex={activeIndex} id={panel.id} title={panel.Title} subheading={panel.subheading} image={panel.Image}/>
             ))}

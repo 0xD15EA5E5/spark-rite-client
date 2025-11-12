@@ -1,7 +1,7 @@
 export function Footer() {
     return (
         <>
-            <div className="w-full px-10 py-5 border-t-4 border-yellow-400">
+            <div className="w-full px-10 py-5 border-t-4 border-yellow-400 text-xs md:text-sm lg:text-base">
                 <div className="float-left">
                     <a href="/privacy"><p>Privacy-policy</p></a>
                     <a href="/cookies"><p>Cookies</p></a>

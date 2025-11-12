@@ -21,12 +21,11 @@ export async function globalloader() {
 
     const globaldata = await fetch(url.href);
     var data = await globaldata.json();
-    console.log("data loaded");
     return {globaldata: data as GlobalLoaderData};
 }
 
 export default function Topnav({
-    data,
+    globaldata,
 }: Readonly<GlobalLoaderData>){
     var links: Link[] = [
         {url: "/", text: "Home"},
@@ -38,12 +37,14 @@ export default function Topnav({
     return (
         <div className="grid grid-cols-4 z-99 bg-white relative">
             <div className="col-span-2 h-20 p-2 flex items-center">
-                <StrapiImage className="h-full" src="/uploads/logo_73ef731f0d.png" alt=""/>
-                <div className="ml-2">
-                    {data}
-                    {/* <p>{data.siteName}</p> */}
-                    <p>PETROL TOOL SERVICE & REPAIR</p>
-                </div>
+                <a href="/" className="flex items-center h-20">
+                    <StrapiImage className="h-3/4 md:h-full" src="/uploads/logo_73ef731f0d.png" alt=""/>
+                    <div className="ml-2 text-xs sm:text-sm md:text-base">
+                        {/* {globaldata} */}
+                        <p>SPARK RITE TOOLS</p>
+                        <p>PETROL TOOL SERVICE & REPAIR</p>
+                    </div>
+                </a>
             </div>
             <div className="grid grid-rows-subgrid col-span-2 grid-cols-4 nav top-0 z-99">
                 {links.map((link: Link, index) => 
