@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface ContactData{
     name: string;
     email: string;
@@ -8,6 +10,9 @@ interface ContactData{
 export function ContactForm({
 
 }){
+
+    const [msgsent, setMsgSent] = useState(false);
+
     async function contact(formData:any){
         const name = formData.get("name");
         const email = formData.get("email");
@@ -17,7 +22,6 @@ export function ContactForm({
         const BASE_URL = import.meta.env.VITE_STRAPI_URL || "http://localhost:1337";
         const path = "/api/email";
         const url = new URL(path, BASE_URL);
-        this.messagesent = false;
         var response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -31,12 +35,18 @@ export function ContactForm({
                 message: message,
             })
         })
-        
+        var json = await response.json();
+        if(json.success = 'ok'){
+            setMsgSent(true);
+            setTimeout(function(){
+                setMsgSent(false);
+            },3000);
+        }
     }
 
     return (
         <>
-            <div className={(this.messagesent ? '' : '')+" fixed p-5 px-20 bg-green-400 top-1/2 left-1/2 -translate-1/2 text-neutral-50 text-center text-3xl"}>
+            <div className={(msgsent ? '' : 'hidden') + " fixed p-5 px-20 bg-green-400 top-1/2 left-1/2 -translate-1/2 text-neutral-50 text-center text-3xl"}>
                 <p>Message sent</p>
             </div>
             <form action={contact} className="grid px-10 md:px-20 lg:px-40 grid-cols-2 pb-20 gap-4">

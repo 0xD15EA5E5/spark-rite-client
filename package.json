@@ -2,6 +2,7 @@
   "name": "client",
   "private": true,
   "type": "module",
+  "homepage": "https://sparkrite.mrdevelop.co.uk/",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
