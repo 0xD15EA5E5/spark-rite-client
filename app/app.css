@@ -60,7 +60,7 @@ body {
 @media screen and (max-width: 640px) {
   .triplehexcard .hexagon {
     width: 45vw;
-    height: 45vw;
+    height: 40vw;
   }
 
   .hexagon {
@@ -72,7 +72,7 @@ body {
 @media screen and (max-width: 500px) {
   .triplehexcard .hexagon {
     width: 35vw;
-    height: 35vw;
+    height: 30vw;
   }
 
   .hexagon {
