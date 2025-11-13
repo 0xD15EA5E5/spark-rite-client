@@ -23,7 +23,7 @@ export function Hexcard({
     return(
         <>
             <div className="hexcard pt-5 px-10 md:px-20 lg:px-40 mx-auto grid grid-cols-2 gap-4">
-                <div className="flex col-span-full sm:col-span-1 justify-center flex-col text-xs md:text-sm lg:text-base">
+                <div className="flex col-span-full sm:col-span-1 justify-center flex-col text-base md:text-sm lg:text-base">
                     <StrapiText content={Text} {...Text} />
                     { ButtonURL ? <Button url={ButtonURL} label={ButtonText} classes={"mt-8 border-yellow-400 hover:bg-yellow-400 hover:text-neutral-50"}/> : ''}
                 </div>
